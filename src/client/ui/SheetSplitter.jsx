@@ -9,6 +9,8 @@ import LocalImagesLoader from "../utils/LocalImagesLoader";
 import ReactDOM from "react-dom";
 import Downloader from "platform/Downloader";
 
+var base64js = require('base64-js')
+
 class SheetSplitter extends React.Component {
     constructor(props) {
         super(props);
@@ -34,7 +36,9 @@ class SheetSplitter extends React.Component {
 
         this.buffer = document.createElement('canvas');
         
+        this.repack = this.repack.bind(this);
         this.doSplit = this.doSplit.bind(this);
+        this.getFiles = this.getFiles.bind(this);
         this.selectTexture = this.selectTexture.bind(this);
         this.selectDataFile = this.selectDataFile.bind(this);
         this.updateFrames = this.updateFrames.bind(this);
@@ -75,10 +79,9 @@ class SheetSplitter extends React.Component {
         event.stopPropagation();
         return false;
     }
-    
-    doSplit() {
+
+    getFiles(download){
         Observer.emit(GLOBAL_EVENT.SHOW_SHADER);
-        
         if(!this.frames || !this.frames.length) {
             Observer.emit(GLOBAL_EVENT.HIDE_SHADER);
             Observer.emit(GLOBAL_EVENT.SHOW_MESSAGE, I18.f('SPLITTER_ERROR_NO_FRAMES'));
@@ -134,15 +137,37 @@ class SheetSplitter extends React.Component {
                 item.name += '.' + ext;
             }
             
-            let base64 = this.buffer.toDataURL(ext === 'png' ? 'image/png' : 'image/jpeg');
-            base64 = base64.split(',').pop();
+            if (download){
+                let base64 = this.buffer.toDataURL(ext === 'png' ? 'image/png' : 'image/jpeg');
+                base64 = base64.split(',').pop();
 
-            files.push({
-                name: item.name,
-                content: base64,
-                base64: base64
-            });
+                files.push({
+                    name: item.name,
+                    content: base64,
+                    base64: base64
+                });
+            }
+            else{
+                let url = this.buffer.toDataURL(ext === 'png' ? 'image/png' : 'image/jpeg');
+
+                files.push({ name: item.name, url: url, fsPath: null });
+            }
         }
+        return files;
+    }
+
+    repack(){
+        const files = this.getFiles(false);
+        
+        Observer.emit(GLOBAL_EVENT.IMAGES_FROM_REPACK, files);
+
+        Observer.emit(GLOBAL_EVENT.HIDE_SHADER);
+
+        this.close();
+    }
+    
+    doSplit() {
+        const files = this.getFiles(true);
         
         Downloader.run(files, this.textureName + '.zip');
 
@@ -196,16 +221,21 @@ class SheetSplitter extends React.Component {
             let reader = new FileReader();
             reader.onload = e => {
                 
-                let content = e.target.result;
-                content = content.split(',');
-                content.shift();
-                content = atob(content);
+                const content = e.target.result.split(',');
+                const byteArray = base64js.toByteArray(content[1]);
+
+                console.log(e.target.result);
                 
-                this.data = content;
+                this.data = new TextDecoder("utf-8").decode(byteArray);;
 
                 this.dataName = item.name;
                 ReactDOM.findDOMNode(this.refs.dataFileName).innerHTML = this.dataName;
                 
+                // fixes a bug where the view doesn't update when you select the texture before the data
+                if (this.state.splitter){
+                    this.updateView();
+                }
+
                 getSplitterByData(this.data, (splitter) => {
                     this.setState({splitter: splitter});
                     this.updateView();
@@ -259,6 +289,7 @@ class SheetSplitter extends React.Component {
     }
     
     updateView() {
+        console.log("updateView");
         this.updateTexture();
         this.updateFrames();
     }
@@ -417,6 +448,7 @@ class SheetSplitter extends React.Component {
                         </table>
 
                         <div>
+                            <div className="btn back-800 border-color-gray color-white" onClick={this.repack}>{I18.f("REPACK")}</div>
                             <div className="btn back-800 border-color-gray color-white" onClick={this.doSplit}>{I18.f("SPLIT")}</div>
                             <div className="btn back-800 border-color-gray color-white" onClick={this.close}>{I18.f("CLOSE")}</div>
                         </div>

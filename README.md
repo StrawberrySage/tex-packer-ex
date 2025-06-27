@@ -1,14 +1,17 @@
+# Tex-Packer-EX
+![logo](https://raw.githubusercontent.com/odrick/free-tex-packer/master/electron/build/icons/96x96.png)
+#
+
+Tex-Packer-EX is a fork of [Free texture packer](https://github.com/odrick/free-tex-packer) which adds new features and bug fixes, including:
+- The ability to repack existing spritesheets
+- Splitter for Sparrow/Starling spritesheets (the standard format for FNF)
+- Correctly ordered frames when exporting
+
+This was primarily created with Friday Night Funkin' modding in mind, however it can be used for any other project.
+
 # Free texture packer
 
-![logo](https://raw.githubusercontent.com/odrick/free-tex-packer/master/electron/build/icons/96x96.png)
-
-#
-
-## IMPORTANT: I don't have time to imporove this app anymore. Only critical bugs will be fixed.
-
-#
-
-Free texture packer creates sprite sheets for you game or site. Rotation, trimming, multipacking, various export formats (json, xml, css, pixi.js, godot, phaser, cocos2d). Zip support. TinyPNG support. Split sheet tool.
+Free texture packer creates sprite sheets for your game or site. Rotation, trimming, multipacking, various export formats (json, xml, css, pixi.js, godot, phaser, cocos2d). Zip support. TinyPNG support. Split sheet tool.
 
 ![screenshot](https://free-tex-packer.com/wp-content/uploads/2019/01/screenshot.png)
 

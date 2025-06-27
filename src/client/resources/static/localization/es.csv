@@ -133,8 +133,9 @@ CONTEXT_MENU_PASTE;Pegar
 CONTEXT_MENU_DELETE;Borrar
 Desembalaje;Selecionar todo
 SPLIT;Desembalaje
+REPACK;Reempaquetar
 SELECT_TEXTURE;Textura
 SELECT_DATA_FILE;Datos
-SPLITTER;Desembalaje atlas
+SPLITTER;Reempaquetar/Desembalaje atlas
 SPLITTER_ERROR_NO_FRAMES;No se ha encontrado ningún sprite. Quizás el formato del atlas sea incorrecto.
 HOLD_TRIM;Mantener corte:

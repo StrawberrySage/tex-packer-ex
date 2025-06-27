@@ -112,8 +112,8 @@
     "fileExt": "paper2dsprites"
   },
   {
-    "type": "Starling",
-    "description": "Starling format",
+    "type": "Sparrow/Starling",
+    "description": "Sparrow/Starling format",
     "allowTrim": true,
     "allowRotation": true,
     "template": "Starling.mst",

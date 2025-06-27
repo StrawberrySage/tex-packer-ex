@@ -133,8 +133,9 @@ CONTEXT_MENU_PASTE;Вставить
 CONTEXT_MENU_DELETE;Удалить
 CONTEXT_MENU_SELECT_ALL;Выделить все
 SPLIT;Распаковать
+REPACK;Переупаковка
 SELECT_TEXTURE;Текстура
 SELECT_DATA_FILE;Данные
-SPLITTER;Распаковка атласа
+SPLITTER;Переупаковка/Распаковка атласа
 SPLITTER_ERROR_NO_FRAMES;Не найдено ни одного спрайта. Возможно, формат атласа неверен.
 HOLD_TRIM;Обрезать:

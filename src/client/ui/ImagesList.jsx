@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import LocalImagesLoader from '../utils/LocalImagesLoader';
+import Base64ImagesLoader from '../utils/Base64ImagesLoader';
 import ZipLoader from '../utils/ZipLoader';
 import I18 from '../utils/I18';
 
@@ -35,6 +36,8 @@ class ImagesList extends React.Component {
         Observer.on(GLOBAL_EVENT.IMAGE_ITEM_SELECTED, this.handleImageItemSelected, this);
         Observer.on(GLOBAL_EVENT.IMAGE_CLEAR_SELECTION, this.handleImageClearSelection, this);
         Observer.on(GLOBAL_EVENT.FS_CHANGES, this.handleFsChanges, this);
+
+        Observer.on(GLOBAL_EVENT.IMAGES_FROM_REPACK, this.addImagesFromRepack, this);
 		
 		this.handleKeys = this.handleKeys.bind(this);
 		
@@ -78,6 +81,13 @@ class ImagesList extends React.Component {
                 if(help) help.className = "image-drop-help";
                 return false;
             };
+        }
+    }
+
+    addImagesFromRepack(files){
+        if (files.length){
+            let loader = new Base64ImagesLoader();
+            loader.load(files, null, data => this.loadImagesComplete(data));
         }
     }
     

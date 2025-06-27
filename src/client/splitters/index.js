@@ -1,3 +1,4 @@
+import Sparrow from './Sparrow';
 import Grid from './Grid';
 import JsonHash from './JsonHash';
 import JsonArray from './JsonArray';
@@ -6,6 +7,7 @@ import UIKit from './UIKit';
 import Spine from './Spine';
 
 const list = [
+    Sparrow,
     Grid,
     JsonHash,
     JsonArray,
@@ -41,7 +43,7 @@ function getSplitterByData(data, cb) {
 }
 
 function getDefaultSplitter() {
-    return Grid;
+    return Sparrow;
 }
 
 export { getSplitterByType, getSplitterByData, getDefaultSplitter };

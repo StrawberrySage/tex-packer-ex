@@ -132,8 +132,9 @@ CONTEXT_MENU_PASTE;Einfügen
 CONTEXT_MENU_DELETE;Löschen
 CONTEXT_MENU_SELECT_ALL;Alles markieren
 SPLIT;Extrahieren
+REPACK;Wieder verpacken
 SELECT_TEXTURE;Textur
 SELECT_DATA_FILE;Daten-Datei
-SPLITTER;Sprites aus Bild extrahieren
+SPLITTER;Wieder verpacken/Sprites aus Bild extrahieren
 SPLITTER_ERROR_NO_FRAMES;Sprites wurden nicht gefunden. Vermutlich ist das Atlas Format falsch.
 HOLD_TRIM;Trim beibehalten:

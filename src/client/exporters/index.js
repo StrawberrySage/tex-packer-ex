@@ -51,6 +51,18 @@ function getExporterByType(type) {
     return null;
 }
 
+function getNum(str){
+    const s = str.split('').filter((c) => {
+        return !isNaN(c);
+    }).join("");
+    if (s.length){
+        return parseInt(s);
+    }
+    else {
+        return 0;
+    }
+}
+
 function prepareData(data, options) {
 
     let opt = Object.assign({}, options);
@@ -124,6 +136,13 @@ function prepareData(data, options) {
     }
 
     if(ret.length) {
+        // get the numbers in order first
+        ret.sort((a, b) => {
+            return getNum(a.name) - getNum(b.name);
+        });
+        // then, sort it again by the contents of the name
+        ret.sort((a, b) => a.name.localeCompare(b.name)); 
+
         ret[0].first = true;
         ret[ret.length-1].last = true;
     }

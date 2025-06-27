@@ -1,11 +1,11 @@
 {
-  "name": "free-tex-packer",
-  "displayName": "Free texture packer",
-  "version": "0.6.7",
+  "name": "tex-packer-ex",
+  "displayName": "Tex-Packer-EX",
+  "version": "0.6.8",
   "description": "Free online texture packer",
-  "url": "http://free-tex-packer.com",
-  "download": "http://free-tex-packer.com/download",
-  "webApp": "http://free-tex-packer.com/app",
+  "url": "https://strawberrysage.github.io/tex-packer-ex",
+  "download": "https://strawberrysage.github.io/tex-packer-ex",
+  "webApp": "https://strawberrysage.github.io/tex-packer-ex",
   "main": "src/index.js",
   "tinifyUrl": "http://free-tex-packer.com/server/tinify.php",
   "localizations": [
@@ -47,6 +47,10 @@
     {
       "name": "Davide Matta aka DadeKuma",
       "homepage": "https://github.com/DadeKuma"
+    },
+    {
+      "name": "StrawberrySage",
+      "homepage": "https://github.com/StrawberrySage"
     }
   ],
   "scripts": {
