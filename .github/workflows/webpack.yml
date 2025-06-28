@@ -25,23 +25,4 @@ jobs:
     - name: Build
       run: |
         npm ci --legacy-peer-deps
-        npm run build-web
-
-    - name: Upload generated files as artifact
-      uses: actions/upload-pages-artifact@v3
-
-  deploy:
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: $
-
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+        npm run deploy
