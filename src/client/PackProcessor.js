@@ -125,6 +125,7 @@ class PackProcessor {
         }
 
         if (width < minWidth || height < minHeight) {
+            console.log("Invalid Size Error. Expected: " + width + "x" + height + ", Got: " + width + "x" + height);
             if (onError) onError({
                 description: I18.f("INVALID_SIZE_ERROR", minWidth, minHeight)
             });

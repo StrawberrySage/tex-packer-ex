@@ -61,7 +61,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/odrick/free-tex-packer.git"
+    "url": "git+https://github.com/StrawberrySage/tex-packer-ex.git"
   },
   "keywords": [
     "texture",
@@ -74,14 +74,14 @@
     "sprite",
     "2d"
   ],
-  "author": "Alexander Norinchak",
-  "authorSite": "https://github.com/odrick/",
-  "authorEmail": "norinchak@gmail.com",
+  "author": "StrawberrySage",
+  "authorSite": "https://github.com/StrawberrySage/",
+  "authorEmail": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/odrick/free-tex-packer/issues"
+    "url": "https://github.com/StrawberrySage/tex-packer-ex/issues"
   },
-  "homepage": "https://github.com/odrick/free-tex-packer",
+  "homepage": "https://github.com/StrawberrySage/tex-packer-ex",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",

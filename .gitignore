@@ -10,3 +10,4 @@ package-lock.json
 /index.js.map
 /dist/app
 /electron/www
+/dist/*
