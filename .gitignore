@@ -1,0 +1,11 @@
+.idea/*
+.vscode/*
+
+node_modules/*
+
+.DS_Store
+/index.js
+/index.js.map
+/dist/app
+/electron/www
+/dist/*
